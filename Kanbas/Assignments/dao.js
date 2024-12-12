@@ -6,7 +6,6 @@ export function createAssignment(assignment) {
 }
 
 export function deleteAssignment(assignmentId) {
-    console.log(assignmentId);
     return model.deleteOne({ _id: assignmentId });
 }
 

@@ -12,4 +12,22 @@ export default function QuizRoutes(app) {
         res.json(questions);
     };
     app.get("/api/quizzes/:quizId/questions", findQuestionsForQuiz);
+
+    app.post("/api/quizzes", async (req, res) => {
+        const quiz = await quizzesDao.createQuiz(req.body);
+        res.json(quiz);
+    });
+
+    app.put("/api/quizzes/:quizId", async (req, res) => {
+        const { quizId } = req.params;
+        const quizUpdates = req.body;
+        const status = await quizzesDao.updateQuiz(quizId, quizUpdates);
+        res.status(204).send();
+    });
+
+    app.delete("/api/quizzes/:quizId", async (req, res) => {
+        const { quizId } = req.params;
+        const status = await quizzesDao.deleteQuiz(quizId);
+        res.status(204).send();
+    });
 }

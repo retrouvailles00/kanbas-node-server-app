@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const schema = new mongoose.Schema(
     {
         quizTitle: String,
+        ifPublished: Boolean,
         courseObjectId: { type: mongoose.Schema.Types.ObjectId, ref: "CourseModel" },
         quizType: String,
         points: Number,
